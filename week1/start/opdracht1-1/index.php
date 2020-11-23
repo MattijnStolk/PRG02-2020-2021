@@ -1,3 +1,8 @@
+<?php
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,19 +13,19 @@
 <h1>Opdracht 1.1 - Datum en tijd</h1>
 <hr/>
 
-<h2>“het is vandaag 1 november 2019”</h2>
+<h2>“het is vandaag <?php echo date("j F Y") ?>”</h2>
 <p>
-
+    1 november 2019
 </p>
 
-<h2>“het is vandaag 1/11/2019”</h2>
+<h2>“het is vandaag <?php echo date("d/m/y") ?>”</h2>
 <p>
-
+    1/11/2019
 </p>
 
-<h2>“het is nu 2 uur en 30 minuten” (of: “het is nu 6 uur en 1 minuut”)</h2>
+<h2>“het is nu <?php echo date("G")?> uur en <?php echo date("i")?> minuten</h2>
 <p>
-
+    2 uur en 30 minuten” (of: “het is nu 6 uur en 1 minuut”)
 </p>
 </body>
 </html>
