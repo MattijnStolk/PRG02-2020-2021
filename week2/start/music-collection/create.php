@@ -1,11 +1,35 @@
 <?php
 // Check if form is submitted.
-
+if (isset($_POST['submit'])) {
 
 // 'Post back' with the data from the form.
+    $artist = $_POST['artist'];
+    $album  = $_POST['album'];
+    $genre  = $_POST['genre'];
+    $year   = $_POST['year'];
+    $tracks = $_POST['tracks'];
 
-// Now this data can be stored in de database
+    $errors = [];
+    if($artist == '') {
+        $errors[] = 'Het veldnaam met artiest mag niet leeg zijn.';
+    }
+    if($album == '') {
+        $errors[] = 'Het veldnaam met album mag niet leeg zijn.';
+    }
+    if($genre == '') {
+        $errors[] = 'Het veldnaam met genre mag niet leeg zijn.';
+    }
+    if($year == '') {
+        $errors[] = 'Het veldnaam met year mag niet leeg zijn.';
+    }
+    if($tracks == '') {
+        $errors[] = 'Het veldnaam met tracks mag niet leeg zijn.';
+    }
 
+    if (empty($errors)){
+        // Now this data can be stored in de database
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,26 +44,37 @@
 <body>
 <section>
     <h1>Create new album</h1>
+
+    <?php if (isset($errors)){ ?>
+
+        <ul class="errors">
+            <?php foreach($errors as $error) {?>
+            <li><?= $error ?></li>
+            <?php } ?>
+        </ul>
+
+
+    <?php } ?>
     <form action="" method="post">
         <div class="data-field">
             <label for="artist">Artist</label>
-            <input id="artist" type="text" name="artist" value=""/>
+            <input id="artist" type="text" name="artist" value="<?= $artist ?>" />
         </div>
         <div class="data-field">
             <label for="album">Album</label>
-            <input id="album" type="text" name="album" value=""/>
+            <input id="album" type="text" name="album" value="<?= $album?>"/>
         </div>
         <div class="data-field">
             <label for="genre">Genre</label>
-            <input id="genre" type="text" name="genre" value=""/>
+            <input id="genre" type="text" name="genre" value="<?= $genre ?>"/>
         </div>
         <div class="data-field">
             <label for="year">Year</label>
-            <input id="year" type="text" name="year" value=""/>
+            <input id="year" type="text" name="year" value="<?= $year ?>"/>
         </div>
         <div class="data-field">
             <label for="tracks">Tracks</label>
-            <input id="tracks" type="number" name="tracks" value=""/>
+            <input id="tracks" type="number" name="tracks" value="<?= $tracks ?>"/>
         </div>
         <div class="data-submit">
             <input type="submit" name="submit" value="Save"/>

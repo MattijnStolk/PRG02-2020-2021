@@ -1,3 +1,9 @@
+<?php
+$tijd = date("G");
+    if ($tijd >18 && $tijd < 6)$begroeting = "Goedenavond";
+    if ($tijd >6 && $tijd < 12)$begroeting = "Goenenavond;";
+    if ($tijd >12 && $tijd < 18)$begroeting= "Goedenmiddag";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,9 +15,7 @@
 <hr/>
 
 <h2>
-    <?php if (date("G") >18 && date("G") < 6)echo "Goedenavond" ?>
-    <?php if (date("G") >6 && date("G") < 12)echo "Goedenmorgen" ?>
-    <?php if (date("G") >12 && date("G") < 18)echo "Goedenmiddag" ?>
+    <?= $begroeting ?>
 </h2>
 <p>
 

@@ -1,5 +1,9 @@
 <?php
-
+if  (date("i") === 01){
+    $minutesString = "minuut";
+}else{
+    $minutesString = "minuten";
+}
 ?>
 
 

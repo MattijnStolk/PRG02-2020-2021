@@ -1,18 +1,18 @@
 <?php
 // Include data (all albums)
-
+require_once 'includes/music-data.php';
 
 // IF index is not present in url or value is empty
-
+if (!isset($_GET['index']) || isset($_GET['index']) == ''){
 
     // redirect to index.php
-
-
+    header('Location: index.php');
+}
 // Get index of album from url (GET)
-
+$index = $_GET['index'];
 
 // get album from albums collection
-
+$musicAlbum = $musicAlbums[$index];
 
 ?>
 <!doctype html>
@@ -27,11 +27,11 @@
 </head>
 <body>
 <section>
-    <h1>[ALBUMNAAM]</h1>
+    <h1><?=$musicAlbum['album']?></h1>
     <ul>
-        <li>Genre:</li>
-        <li>Year:</li>
-        <li>Tracks:</li>
+        <li>Genre: <?= $musicAlbum['genre'] ?></li>
+        <li>Year: <?= $musicAlbum['year'] ?></li>
+        <li>Tracks: <?= $musicAlbum['tracks'] ?></li>
     </ul>
 </section>
 <div>

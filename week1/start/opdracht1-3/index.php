@@ -4,75 +4,75 @@
 $musicAlbums =
     [
         [
-            'Marco Borsato',
-            'Thuis',
-            '2017',
-            '10',
-            'pop'
+            'artist' => 'Marco Borsato',
+            'album' => 'Thuis',
+            'year' => '2017',
+            'tracks' => '10',
+            'genre' => 'pop'
         ],
         [
-            'Nick en Simon',
-            'Aangenaam',
-            '2017',
-            '15',
-            'pop'
+            'artist' => 'Nick en Simon',
+            'album' => 'Aangenaam',
+            'year' => '2017',
+            'tracks' => '15',
+            'genre' => 'pop'
         ],
         [
-            'Andre Hazes',
-            'Meer Hazes',
-            '2016',
-            '20',
-            'Levenslied'
+            'artist' => 'Andre Hazes',
+            'album' => 'Meer Hazes',
+            'year' => '2016',
+            'tracks' => '20',
+            'genre' => 'Levenslied'
         ],
         [
-            'Micheal Jackson',
-            'XSCAPE',
-            '2014',
-            '17',
-            'pop'
+            'artist' => 'Micheal Jackson',
+            'album' => 'XSCAPE',
+            'year' => '2014',
+            'tracks' => '17',
+            'genre' => 'pop'
         ],
         [
-            'Joost',
-            '1983',
-            '2019',
-            '13',
-            'dance'
+            'artist' => 'Joost',
+            'album' => '1983',
+            'year' => '2019',
+            'tracks' => '13',
+            'genre' => 'dance'
         ],
         [
-            'bbno$',
-            'Recess',
-            '2019',
-            '11',
-            'hiphop'
+            'artist' => 'bbno$',
+            'album' => 'Recess',
+            'year' => '2019',
+            'tracks' => '11',
+            'genre' => 'hiphop'
 
         ],
         [
-            'josbros',
-            'Niet meer de same',
-            '2018',
-            '9',
-            'hiphop'
+            'artist' => 'josbros',
+            'album' => 'Niet meer de same',
+            'year' => '2018',
+            'tracks' => '9',
+            'genre' => 'hiphop'
         ],
         [
-            'Russian Village Boys',
-            'Russian Dutch',
-            '2019',
-            '8',
-            'dance'
+            'artist' => 'Russian Village Boys',
+            'album' => 'Russian Dutch',
+            'year' => '2019',
+            'tracks' => '8',
+            'genre' => 'dance'
         ],
        [
-            'Joyner Lucas',
-            '508-507-2209',
-            '2017',
-            '16',
-            'hiphop'
+           'artist' => 'Joyner Lucas',
+           'album' => '508-507-2209',
+           'year' => '2017',
+           'tracks' => '16',
+           'genre' => 'hiphop'
         ],
         [
-            'quadeca',
-            'Voice Memos',
-            '2019',
-            '13',
-            'hiphop'
+            'artist' => 'quadeca',
+            'album' => 'Voice Memos',
+            'year' => '2019',
+            'tracks' => '13',
+            'genre' => 'hiphop'
         ]
 
     ];
@@ -108,11 +108,11 @@ $musicAlbums =
         <?php foreach ($musicAlbums as $key => $album){?>
             <tr>
                 <td><?=$key+1?></td>
-                <td><?=$album[0]?></td>
-                <td><?=$album[1]?></td>
-                <td><?=$album[2]?></td>
-                <td><?=$album[3]?></td>
-                <td><?=$album[4]?></td>
+                <td><?=$album['artist']?></td>
+                <td><?=$album['album']?></td>
+                <td><?=$album['genre']?></td>
+                <td><?=$album['year']?></td>
+                <td><?=$album['tracks']?></td>
             </tr>
         <?php } ?>
     </tbody>
