@@ -59,7 +59,7 @@ mysqli_close($db);
         // van een album getoond worden.
         foreach ($albums as $album) { ?>
 
-            <li><?= $album['name'] ?> <?= $album['artist']?></li>
+            <li><?= $album['name'] ?>  <?= $album['artist']?></li>
 
         <?php } ?>
     </ul>

@@ -1,15 +1,23 @@
 <?php
 //Require music data to use the db variable in this file
-
+require_once 'includes/database.php';
 
 //Get the result set from the database with a SQL query
+$query = "SELECT * FROM albums";
 
+$result = mysqli_query($db, $query)
+or die('Error '.mysqli_error($db).' with query '.$query);
 
 //Loop through the result to create a custom array
+$albums = [];
 
+while($row = mysqli_fetch_assoc($result))
+{
+    $albums[] = $row;
+}
 
 //Close connection
-
+mysqli_close($db);
 
 ?>
 <!doctype html>
@@ -41,15 +49,16 @@
     </tr>
     </tfoot>
     <tbody>
-    <?php foreach ( as ) { ?>
+
+    <?php foreach ($albums as $album) { ?>
         <tr>
-            <td class="image"><img src="images/" alt=""/></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><a href="detail.php">Details</a></td>
+            <td class="image"><img src="<?=$album['img']?>" alt=""/></td>
+            <td><?=$album['id']?></td>
+            <td><?=$album['artist']?></td>
+            <td><?=$album['genre']?></td>
+            <td><?=$album['year']?></td>
+            <td><?=$album['tracks']?></td>
+            <td><a href="detail.php?index=<?=$album['id']?>">Details</a></td>
         </tr>
     <?php } ?>
     </tbody>
