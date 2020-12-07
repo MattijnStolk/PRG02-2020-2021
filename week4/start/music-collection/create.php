@@ -1,12 +1,14 @@
 <?php
 //Check if Post isset, else do nothing
 if (isset($_POST['submit'])) {
+    require_once "includes/database.php";
     //Postback with the data showed to the user, first retrieve data from 'Super global'
-    $artist = $_POST['artist'];
-    $album = $_POST['album'];
-    $genre = $_POST['genre'];
-    $year = $_POST['year'];
-    $tracks = $_POST['tracks'];
+    $artist = mysqli_escape_string($db, $_POST['artist']);
+    $album = mysqli_escape_string($db, $_POST['album']);
+    $genre = mysqli_escape_string($db, $_POST['genre']);
+    $year = mysqli_escape_string($db, $_POST['year']);
+    $tracks = mysqli_escape_string($db, $_POST['tracks']);
+    $img = mysqli_escape_string($db, $_POST['img']);
 
     //Secure the data above
 
@@ -21,10 +23,7 @@ if (isset($_POST['submit'])) {
     if ($genre == "") {
         $errors[] = 'Genre cannot be empty';
     }
-    if ($year == "") {
-        $errors[] = 'Year cannot be empty';
-    }
-    if (!is_numeric($year) || strlen($year) != 4) {
+    if (!is_numeric($year) || strlen($year) != 4 || $year == "") {
         $errors[] = 'Year needs to be a number with the length of 4';
     }
     if ($tracks == "") {
@@ -33,8 +32,21 @@ if (isset($_POST['submit'])) {
     if (!is_numeric($tracks)) {
         $errors[] = 'Tracks need to be a number';
     }
+    if ($img == "") {
+        $errors[] = 'Image cannot be empty';
+    }
 
-    //TODO: Store in database after there are 0 errors
+    //Save the record to the database if errors are empty
+    if (empty($errors)){
+        $query = "INSERT INTO albums (name, artist, genre, year, tracks, img)
+                  VALUES ('$album', '$artist', '$genre', '$year', '$tracks', '$img')";
+        $result = mysqli_query($db, $query)
+        or die('Error: '.$query);
+
+        if (!$result){
+            $errors[] = 'Something went wrong in your database query: ' . mysqli_error($db);
+        }
+    };
 }
 ?>
 <!doctype html>
@@ -75,6 +87,10 @@ if (isset($_POST['submit'])) {
         <div class="data-field">
             <label for="tracks">Tracks</label>
             <input id="tracks" type="number" name="tracks" value="<?= (isset($tracks) ? $tracks : ''); ?>"/>
+        </div>
+        <div class="data-field">
+            <label for="img">Image</label>
+            <input id="img" type="text" name="img" value="<?= (isset($img) ? $img : ''); ?>"/>
         </div>
         <div class="data-submit">
             <input type="submit" name="submit" value="Save"/>

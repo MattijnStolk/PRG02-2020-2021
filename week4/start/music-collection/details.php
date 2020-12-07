@@ -24,7 +24,7 @@ mysqli_close($db);
 <h1><?= $album['artist'] . ' - ' . $album['name']; ?></h1>
 
 <div>
-    <img src="images/<?= $album['image']; ?>" alt=""/>
+    <img src="<?= $album['img']; ?>" alt=""/>
 </div>
 <ul>
     <li>Genre: <?= $album['genre']; ?></li>

@@ -23,7 +23,7 @@ require_once "includes/music-data.php";
             <div class="album">
                 <div class="cover">
                     <a href="details.php?id=<?= $musicAlbum['id']; ?>">
-                        <img src="<?= $musicAlbum['image']; ?>" alt="<?= $musicAlbum['name']; ?>"/>
+                        <img src="<?= $musicAlbum['img']; ?>" alt="<?= $musicAlbum['name']; ?>"/>
                     </a>
                 </div>
                 <div class="links">

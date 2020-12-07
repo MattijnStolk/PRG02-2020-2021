@@ -23,6 +23,9 @@ require_once "includes/music-data.php";
         <th>Genre</th>
         <th>Year</th>
         <th>Tracks</th>
+        <th>Details</th>
+        <th>Edit</th>
+        <th>Delete</th>
         <th colspan="2"></th>
     </tr>
     </thead>
@@ -34,7 +37,7 @@ require_once "includes/music-data.php";
     <tbody>
     <?php foreach ($musicAlbums as $musicAlbum) { ?>
         <tr>
-            <td class="image"><img src="images/<?= $musicAlbum['image']; ?>" alt="<?= $musicAlbum['name']; ?>"/></td>
+            <td class="image"><img src="<?= $musicAlbum['img']; ?>" alt="<?= $musicAlbum['name']; ?>"/></td>
             <td><?= $musicAlbum['id']; ?></td>
             <td><?= $musicAlbum['artist']; ?></td>
             <td><?= $musicAlbum['name']; ?></td>
@@ -43,6 +46,7 @@ require_once "includes/music-data.php";
             <td><?= $musicAlbum['tracks']; ?></td>
             <td><a href="details.php?id=<?= $musicAlbum['id']; ?>">Details</a></td>
             <td><a href="edit.php?id=<?= $musicAlbum['id']; ?>">Edit</a></td>
+            <td><a href="delete.php?id=<?= $musicAlbum['id']; ?>">Delete</a></td>
         </tr>
     <?php } ?>
     </tbody>
