@@ -47,7 +47,7 @@ mysqli_close($db);
     <tr>
         <td colspan="9">&copy; My Collection</td>
     </tr>
-    </tfoot>
+    </tfoot>ame
     <tbody>
 
     <?php foreach ($albums as $album) { ?>
@@ -55,6 +55,7 @@ mysqli_close($db);
             <td class="image"><img src="<?=$album['img']?>" alt=""/></td>
             <td><?=$album['id']?></td>
             <td><?=$album['artist']?></td>
+            <td><?=$album['n']?></td>
             <td><?=$album['genre']?></td>
             <td><?=$album['year']?></td>
             <td><?=$album['tracks']?></td>
