@@ -1,11 +1,10 @@
 <?php
-//Require music data to use variable in this file
-/** @var $db */
+//Require DB settings with connection variable
 require_once "includes/database.php";
 
 //Get the result set from the database with a SQL query
 $query = "SELECT * FROM albums";
-$result = mysqli_query($db, $query);
+$result = mysqli_query($db, $query) or die ('Error: ' . $query );
 
 //Loop through the result to create a custom array
 $musicAlbums = [];
@@ -15,7 +14,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 //Close connection
 mysqli_close($db);
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,6 +24,7 @@ mysqli_close($db);
 </head>
 <body>
 <h1>Music Collection</h1>
+<a href="create.php">Create new album</a>
 <a href="index-alternative.php">Check alternative view</a>
 <table>
     <thead>
@@ -37,12 +36,12 @@ mysqli_close($db);
         <th>Genre</th>
         <th>Year</th>
         <th>Tracks</th>
-        <th colspan="2"></th>
+        <th colspan="3"></th>
     </tr>
     </thead>
     <tfoot>
     <tr>
-        <td colspan="9">&copy; My Collection</td>
+        <td colspan="10">&copy; My Collection</td>
     </tr>
     </tfoot>
     <tbody>
@@ -55,7 +54,9 @@ mysqli_close($db);
             <td><?= $musicAlbum['genre'] ?></td>
             <td><?= $musicAlbum['year'] ?></td>
             <td><?= $musicAlbum['tracks'] ?></td>
-            <td><a href="detail.php?id=<?= $musicAlbum['id'] ?>">Details</a></td>
+            <td><a href="details.php?id=<?= $musicAlbum['id'] ?>">Details</a></td>
+            <td><a href="edit.php?id=<?= $musicAlbum['id'] ?>">Edit</a></td>
+            <td><a href="delete.php?id=<?= $musicAlbum['id'] ?>">Delete</a></td>
         </tr>
     <?php } ?>
     </tbody>
