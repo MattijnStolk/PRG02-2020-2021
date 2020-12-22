@@ -69,28 +69,28 @@ if (isset($_POST['submit'])) {
     <form action="<?= $_SERVER['REQUEST_URI']; ?>" method="post">
         <div class="data-field">
             <label for="artist">Artist</label>
-            <input id="artist" type="text" name="artist" value="<?= (isset($artist) ? $artist : ''); ?>"/>
+            <input id="artist" type="text" name="artist" value="<?= (isset($artist) ? htmlentities($artist) : ''); ?>"/>
             <span><?= (isset($errors['artist']) ? $errors['artist'] : '') ?></span>
         </div>
         <div class="data-field">
             <label for="album">Album</label>
-            <input id="album" type="text" name="album" value="<?= (isset($album) ? $album : ''); ?>"/>
+            <input id="album" type="text" name="album" value="<?= (isset($album) ? htmlentities($album) : ''); ?>"/>
         </div>
         <div class="data-field">
             <label for="genre">Genre</label>
-            <input id="genre" type="text" name="genre" value="<?= (isset($genre) ? $genre : ''); ?>"/>
+            <input id="genre" type="text" name="genre" value="<?= (isset($genre) ? htmlentities($genre) : ''); ?>"/>
         </div>
         <div class="data-field">
             <label for="year">Year</label>
-            <input id="year" type="text" name="year" value="<?= (isset($year) ? $year : ''); ?>"/>
+            <input id="year" type="text" name="year" value="<?= (isset($year) ? htmlentities($year) : ''); ?>"/>
         </div>
         <div class="data-field">
             <label for="tracks">Tracks</label>
-            <input id="tracks" type="number" name="tracks" value="<?= (isset($tracks) ? $tracks : ''); ?>"/>
+            <input id="tracks" type="number" name="tracks" value="<?= (isset($tracks) ? htmlentities($tracks) : ''); ?>"/>
         </div>
         <div class="data-field">
             <label for="img">Image</label>
-            <input id="img" type="text" name="img" value="<?= (isset($img) ? $img : ''); ?>"/>
+            <input id="img" type="text" name="img" value="<?= (isset($img) ? htmlentities($img) : ''); ?>"/>
         </div>
         <div class="data-submit">
             <input type="submit" name="submit" value="Save"/>
