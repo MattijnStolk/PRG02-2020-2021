@@ -22,7 +22,7 @@ if(mysqli_num_rows($result) == 1)
     $album = mysqli_fetch_assoc($result);
 }
 else {
-    // redirect when db returns no result
+    //redirect when db returns no result
     header('Location: index.php');
     exit;
 }
@@ -41,7 +41,7 @@ mysqli_close($db);
 <h1><?= $album['artist'] . ' - ' . $album['name'] ?></h1>
 
 <div>
-    <img src="images/<?= $album['image'] ?>" alt=""/>
+    <img src="images/<?= $album['img'] ?>" alt=""/>
 </div>
 <ul>
     <li>Genre:  <?= $album['genre'] ?></li>

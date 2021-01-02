@@ -36,7 +36,7 @@ mysqli_close($db);
             <album>
                 <div class="cover">
                     <a href="details.php?id=<?= $musicAlbum['id'] ?>">
-                        <img src="images/<?= $musicAlbum['image'] ?>" alt="<?= $musicAlbum['name'] ?>"/>
+                        <img src="images/<?= $musicAlbum['img'] ?>" alt="<?= $musicAlbum['name'] ?>"/>
                     </a>
                 </div>
                 <div class="links">
