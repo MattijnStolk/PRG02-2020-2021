@@ -1,4 +1,14 @@
 <?php
+session_start();
+
+print_r($_SESSION);
+
+if (isset($_SESSION['email'])){
+    $login = true;
+} else {
+    header(header('Location: login.php'));
+}
+
 //Check if Post isset, else do nothing
 if (isset($_POST['submit'])) {
     //Require database in this file & image helpers

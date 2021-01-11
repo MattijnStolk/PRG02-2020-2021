@@ -1,6 +1,6 @@
 <?php
 $host       = "localhost";
-$database   = "music_collection_images";
+$database   = "music_collection";
 $user       = "root";
 $password   = "";
 

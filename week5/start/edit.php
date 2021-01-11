@@ -2,20 +2,6 @@
 //Require db
 require_once "includes/database.php";
 
-//Retrieve the GET parameter from the 'Super global'
-$albumId = $_GET['id'];
-
-//Get the result set from the database with a SQL query
-$query = "SELECT * FROM albums WHERE id = $albumId";
-$result = mysqli_query($db, $query)
-        or die ('Error: ' . $query );
-
-//Loop through the result to create a custom array
-$musicAlbums = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $musicAlbums[] = $row;
-}
-
 //TODO: Handle POST data & store in DB
 if (isset($_POST['submit'])) {
 
@@ -30,13 +16,50 @@ if (isset($_POST['submit'])) {
     //Require the form validation handling
     require_once 'includes/form-validation.php';
 
+    //Save variables to array so the form won't break
+    //This array is build the same way as the db result
+    $album = [
+        'artist' => $artist,
+        'name' => $name,
+        'genre' => $genre,
+        'year' => $year,
+        'tracks' => $tracks,
+    ];
+
     if (empty($errors)){
         //Save the record to the database
         $query = "UPDATE albums SET name = '$name', artist = '$artist', genre = '$genre', year = '$year', tracks = '$tracks' WHERE id = $id";
         $result = mysqli_query($db, $query)
         or die('Error: '.$query .mysqli_error($db));
+
+        if ($result) {
+            header('Location: index.php');
+            exit;
+        } else {
+            $errors[] = 'Something went wrong in your database query: ' . mysqli_error($db);
+        }
     }
-   // , artist = $artist, genre = $genre, year = $year, tracks = $tracks
+}else if (isset($_GET['id'])) {
+    //Retrieve the GET parameter from the 'Super global'
+    $albumId = $_GET['id'];
+    $musicAlbums = [];
+
+    //Get the record from the database result
+    $query = "SELECT * FROM albums WHERE id = " . mysqli_escape_string($db, $albumId);
+    $result = mysqli_query($db, $query);
+
+    if (mysqli_num_rows($result) == 1) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $musicAlbums[] = $row;
+        }
+    } else {
+        // redirect when db returns no result
+        header('Location: index.php');
+        exit;
+    }
+} else {
+    header('Location: index.php');
+    exit;
 }
 
 //Close connection

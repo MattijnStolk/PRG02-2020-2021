@@ -27,6 +27,7 @@ mysqli_close($db);
 <h1>Music Collection</h1>
 <a href="create.php">Create new album</a>
 <a href="index-alternative.php">Check alternative view</a>
+<a href="login.php">LOGIN</a>
 <table>
     <thead>
     <tr>
