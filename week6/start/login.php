@@ -8,6 +8,7 @@ $login = false;
 
 if (isset($_SESSION['email'])){
     $login = true;
+    header('Location: create.php');
 }
 print_r($_SESSION);
 
@@ -34,6 +35,7 @@ if (isset($_POST['submit'])){
             if (password_verify($password, $user['password'])) {
                 $login = true;
                 $_SESSION['email'] = $email;
+                header('Location: create.php');
             }
             if (isset($errors['nologin'])){
                 unset($errors['nologin']);

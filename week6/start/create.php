@@ -100,6 +100,7 @@ if (isset($_POST['submit'])) {
 </form>
 <div>
     <a href="index.php">Go back to the list</a>
+    <a href="logout.php">Log-out</a>
 </div>
 </body>
 </html>
